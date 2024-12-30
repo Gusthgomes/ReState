@@ -1,10 +1,10 @@
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 
 export default function index() {
   return (
-    <View className="w-10 h-10 bg-blue-500" >
+    <View className="flex justify-center items-center w-full h-screen" >
 
       <Text className='text-red-600 font-bold'>welcome to ReState</Text>
       
@@ -14,11 +14,3 @@ export default function index() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
