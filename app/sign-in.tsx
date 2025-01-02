@@ -1,11 +1,30 @@
-import { SafeAreaView, ScrollView, Image, View, Text, TouchableOpacity } from 'react-native'
+import { SafeAreaView, ScrollView, Image, View, Text, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import images from '@/constants/images'
 import icons from '@/constants/icons'
+import { login } from '@/lib/appwirte'
+
+import { useGlobalContext } from '@/lib/global-provider'
+import { Redirect } from 'expo-router'
+
+
 
 const SignIn = () => {
 
-  const handleLogin = () => {};
+  const { refetch, loading, isLogged } = useGlobalContext();
+
+  if (!loading && isLogged) return <Redirect href="/" />;
+
+  const handleLogin = async () => {
+    const result = await login();
+
+    if (result) {
+      console.log('Login efetuado com sucesso!');
+      refetch();
+    } else {
+      Alert.alert('Erro ao efetuar login!');
+    }
+  };
 
   return (
     <SafeAreaView className='bg-white h-full mt-5'>
